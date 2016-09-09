@@ -1,0 +1,19 @@
+﻿@model PlaceSearch.Models.Comment
+
+@{
+    ViewData["Title"] = "Comment - Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.Description)
+    @Html.EditorFor(model => model.Description)
+
+    @Html.LabelFor(model => model.PlaceId)
+    @Html.DropDownList("PlaceId")
+
+    <input type="submit" value="Create" class="btn btn-default" />
+}
+
+@Html.ActionLink("Back to List", "Index")

@@ -1,0 +1,13 @@
+﻿@model PlaceSearch.Models.Comment
+
+@{
+    ViewData["Title"] = "Comment - Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Comment Details</h2>
+<hr />
+
+<p>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)</p>
+<p>@Html.DisplayNameFor(model => model.PlaceId) : @Html.DisplayFor(model => model.PlaceId)</p>
+
+<p>@Html.ActionLink("Edit", "Edit", new { id = Model.CommentId }) | @Html.ActionLink("Back to List", "Index")</p>
