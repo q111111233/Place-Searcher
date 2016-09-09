@@ -1,0 +1,24 @@
+﻿@model PlaceSearch.Models.Place
+
+<html>
+<head>
+    <title>Edit</title>
+</head>
+<body>
+    <h2>Edit</h2>
+    <hr />
+    <h4>Edit: @Html.DisplayFor(model => model.PlaceName)</h4>
+
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(model => model.PlaceId)
+
+        @Html.LabelFor(model => model.PlaceName)
+        @Html.EditorFor(model => model.PlaceName)
+
+        <input type="submit" value="Save" />
+    }
+    <p>@Html.ActionLink("Back to list", "Index")</p>
+
+</body>
+</html>
