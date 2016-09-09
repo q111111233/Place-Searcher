@@ -16,5 +16,17 @@ namespace PlaceSearch.Controllers
             var thisPlace = db.Places.FirstOrDefault(places => places.PlaceId == id);
             return View(thisPlace);
         }
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Place place)
+        {
+            db.Places.Add(place);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -1,0 +1,18 @@
+﻿@model PlaceSearch.Models.Place
+
+<html>
+<head>
+    <title> Create</title>
+</head>
+<body>
+    <h2>Create</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.LabelFor(model => model.PlaceName)
+        @Html.TextBoxFor(model => model.PlaceName)
+        <input type="submit" value="Add new" />
+    }
+    <p>@Html.ActionLink("Back to list", "Index")</p>
+</body>
+</html>
