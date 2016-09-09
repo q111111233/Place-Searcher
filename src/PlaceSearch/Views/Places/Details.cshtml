@@ -1,0 +1,13 @@
+﻿@model PlaceSearch.Models.Place
+
+<html>
+<head>
+    <title>Details</title>
+</head>
+<body>
+    <h2>Details</h2>
+    <hr />
+    @Html.DisplayNameFor(model => model.PlaceName): @Html.DisplayFor(model => model.PlaceName)
+    <p>@Html.ActionLink("Back to list", "Index")</p>
+</body>
+</html>
