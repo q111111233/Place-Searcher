@@ -28,7 +28,7 @@ namespace PlaceSearch
             services.AddMvc();
 
             services.AddEntityFramework()
-                .AddDbContext<PlaceSearchContext>(options =>
+                .AddDbContext<MigrationContext>(options =>
                     options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
         }
 
