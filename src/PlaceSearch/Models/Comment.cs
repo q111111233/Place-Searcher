@@ -1,9 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PlaceSearch.Models
 {
-    [Table("Comments")]
     public class Comment
     {
         [Key]
