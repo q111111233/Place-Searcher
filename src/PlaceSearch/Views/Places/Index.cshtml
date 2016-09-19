@@ -3,16 +3,24 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @model IEnumerable<PlaceSearch.Models.Place>
+@using System.Security.Claims
 
 <h2>Place Search</h2>
-<h4>@Html.DisplayNameFor(model => model.PlaceName)</h4>
-<ul>
-    @foreach (var listPlace in Model)
-    {
-        <li>@Html.DisplayFor(modelPlace => listPlace.PlaceName) 
-    | @Html.ActionLink("Details", "Details", new { id = listPlace.PlaceId })
-    | @Html.ActionLink("Edit", "Edit", new { id = listPlace.PlaceId }) 
-    | @Html.ActionLink("Delete", "Delete", new { id = listPlace.PlaceId })</li>
-    }
-</ul>
+@if (Model.Any())
+{
+    <h4>@Html.DisplayNameFor(model => model.PlaceName)</h4>
+    <ul>
+        @foreach (var listPlace in Model)
+        {
+            <li>@Html.DisplayFor(modelPlace => listPlace.PlaceName) 
+        | @Html.ActionLink("Details", "Details", new { id = listPlace.PlaceId })
+        | @Html.ActionLink("Edit", "Edit", new { id = listPlace.PlaceId }) 
+        | @Html.ActionLink("Delete", "Delete", new { id = listPlace.PlaceId })</li>
+        }
+    </ul>
+}
+else
+{
+    <p>No tasks have been added yet!</p>
+}
 <p>@Html.ActionLink("Add new item", "Create")</p>

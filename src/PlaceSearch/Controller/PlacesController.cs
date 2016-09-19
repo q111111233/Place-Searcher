@@ -1,21 +1,30 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PlaceSearch.Models;
 using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace PlaceSearch.Controllers
 {
+    [Authorize]
     public class PlacesController : Controller
     {
         private ApplicationDbContext _db;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public PlacesController(ApplicationDbContext db)
+        public PlacesController(UserManager<ApplicationUser> userManager, ApplicationDbContext db)
         {
+            _userManager = userManager;
             _db = db;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View(_db.Places.ToList());
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var currentUser = await _userManager.FindByIdAsync(userId);
+            return View(_db.Places.Where(x => x.User.Id == currentUser.Id));
         }
         public IActionResult Details(int id)
         {
@@ -28,8 +37,11 @@ namespace PlaceSearch.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Place place)
+        public async Task<IActionResult> Create(Place place)
         {
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var currentUser = await _userManager.FindByIdAsync(userId);
+            place.User = currentUser;
             _db.Places.Add(place);
             _db.SaveChanges();
             return RedirectToAction("Index");
