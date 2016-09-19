@@ -17,6 +17,7 @@ namespace PlaceSearch.controller
         {
             _db = db;
         }
+
         public IActionResult Index()
         {
             return View(_db.Comments.Include(comments => comments.Place).ToList());
