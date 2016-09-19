@@ -8,8 +8,8 @@ using PlaceSearch.Models;
 namespace PlaceSearch.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20160913230303_PlaceSearch")]
-    partial class PlaceSearch
+    [Migration("20160919002756_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

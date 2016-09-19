@@ -11,9 +11,9 @@ namespace PlaceSearch.controller
 {
     public class CommentsController : Controller
     {
-        private readonly PlaceSearchContext _db;
+        private readonly ApplicationDbContext _db;
 
-        public CommentsController(PlaceSearchContext db)
+        public CommentsController(ApplicationDbContext db)
         {
             _db = db;
         }

@@ -7,9 +7,9 @@ namespace PlaceSearch.Controllers
 {
     public class PlacesController : Controller
     {
-        private PlaceSearchContext _db;
+        private ApplicationDbContext _db;
 
-        public PlacesController(PlaceSearchContext db)
+        public PlacesController(ApplicationDbContext db)
         {
             _db = db;
         }

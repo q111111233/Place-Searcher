@@ -8,9 +8,10 @@ using PlaceSearch.Models;
 namespace PlaceSearch.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class PlaceSearchContextModelSnapshot : ModelSnapshot
+    [Migration("20160919023910_test2")]
+    partial class test2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
