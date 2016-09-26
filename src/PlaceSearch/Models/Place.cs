@@ -12,5 +12,13 @@ namespace PlaceSearch.Models
         public string PlaceName { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ApplicationUser User { get; set; }
+        public Place(string placeName, ApplicationUser user, int placeId = 0)
+        {
+            PlaceName = placeName;
+            User = user;
+            PlaceId = placeId;
+        }
+
+        public Place() { }
     }
 }

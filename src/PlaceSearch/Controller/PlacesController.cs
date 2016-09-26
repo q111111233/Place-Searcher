@@ -32,20 +32,16 @@ namespace PlaceSearch.Controllers
             var thisPlace = _db.Places.FirstOrDefault(places => places.PlaceId == id);
             return View(thisPlace);
         }
-        public IActionResult Create()
-        {
-            return View();
-        }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Place place)
+        public async Task<IActionResult> Create(string newName)
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var currentUser = await _userManager.FindByIdAsync(userId);
-            place.User = currentUser;
-            _db.Places.Add(place);
+            Place newPlace = new Place(newName, currentUser);
+            _db.Places.Add(newPlace);
             _db.SaveChanges();
-            return RedirectToAction("Index");
+            return Json(newPlace);
         }
         public IActionResult Edit(int id)
         {
