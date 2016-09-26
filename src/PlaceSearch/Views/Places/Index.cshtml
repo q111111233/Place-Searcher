@@ -24,6 +24,9 @@
         <p>No tasks have been added yet!</p>
     }*@
 
+<h2>list of places</h2>
+<button class="place-list">show all your places</button>
+<div id="place-list"></div>
 
 <h2>Create</h2>
 <form action="Create" class="new-place">
@@ -31,11 +34,12 @@
     <input type="text" name="newName" />
     <button type="submit">Submit</button>
 </form>
-<div id="resultCreate"></div>
+<div id="result-create"></div>
 
 
 <script type="text/javascript">
     $(document).ready(function () {
+
         $('.new-place').submit(function (event) {
             event.preventDefault();
             $.ajax({
@@ -45,7 +49,25 @@
                 data: $(this).serialize(),
                 success: function (result) {
                     var resultMessage = 'You\'ve added ' + result.placeName + " to the database!";
-                    $('#resultCreate').html(resultMessage);
+                    $('#result-create').html(resultMessage);
+                }
+            });
+        });
+
+        $('.place-list').click(function (event) {
+            event.preventDefault();
+            $.ajax({
+                url: '@Url.Action("PlaceList")',
+                type: 'GET',
+                data: $(this).serialize(),
+                dataType: 'json',
+                success: function (result) {
+                    var stringResult = '<ul>';
+                    for (var i = 0; i < result.length; i++) {
+                        stringResult += '<li>' + result[i].placeName + '</li>';
+                    }
+                    stringResult += '</ul>';
+                    $('#place-list').html(stringResult);
                 }
             });
         });

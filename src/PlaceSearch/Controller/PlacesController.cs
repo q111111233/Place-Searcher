@@ -23,9 +23,14 @@ namespace PlaceSearch.Controllers
 
         public async Task<IActionResult> Index()
         {
+            return View();
+        }
+
+        public async Task<IActionResult> PlaceList()
+        {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var currentUser = await _userManager.FindByIdAsync(userId);
-            return View(_db.Places.Where(x => x.User.Id == currentUser.Id));
+            return Json(_db.Places.Where(x => x.User.Id == currentUser.Id));
         }
         public IActionResult Details(int id)
         {
