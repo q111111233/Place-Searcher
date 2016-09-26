@@ -24,11 +24,9 @@ namespace PlaceSearch
         {
             services.AddMvc();
 
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddEntityFramework()
-                .AddEntityFrameworkSqlServer();
-
+                .AddDbContext<ApplicationDbContext>(options =>
+                    options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
             services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
         }
 
@@ -40,7 +38,7 @@ namespace PlaceSearch
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Places}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
 
             app.UseStaticFiles();

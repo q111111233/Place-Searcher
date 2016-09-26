@@ -5,13 +5,18 @@ namespace PlaceSearch.Models
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public virtual DbSet<Place> Places { get; set; }
+        public DbSet<Place> Places { get; set; }
 
-        public virtual DbSet<Comment> Comments { get; set; }
+        public DbSet<Comment> Comments { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+            : base(options)
         {
-            options.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=PlaceSearch;integrated security = True");
+        }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
         }
     }
 }

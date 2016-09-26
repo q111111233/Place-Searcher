@@ -181,9 +181,13 @@ namespace PlaceSearch.Migrations
 
                     b.Property<int>("PlaceId");
 
+                    b.Property<string>("UserId");
+
                     b.HasKey("CommentId");
 
                     b.HasIndex("PlaceId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Comments");
                 });
@@ -247,6 +251,10 @@ namespace PlaceSearch.Migrations
                         .WithMany("Comments")
                         .HasForeignKey("PlaceId")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("PlaceSearch.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("PlaceSearch.Models.Place", b =>

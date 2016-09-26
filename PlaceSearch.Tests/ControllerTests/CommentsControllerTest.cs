@@ -8,32 +8,32 @@ namespace PlaceSearch.Tests.ControllerTests
 {
     public class CommentsControllerTest
     {
-        //[Fact]
-        //public void Get_ViewResult_Index_Test()
-        //{
-        //    //Arrange
-        //    CommentsController controller = new CommentsController();
+        [Fact]
+        public void Get_ViewResult_Index_Test()
+        {
+            //Arrange
+            CommentsController controller = new CommentsController();
 
-        //    //Act
-        //    var result = controller.Index();
+            //Act
+            var result = controller.Index();
 
-        //    //Assert
-        //    Assert.IsType<IActionResult>(result);
-        //}
+            //Assert
+            Assert.IsType<IActionResult>(result);
+        }
 
-        //[Fact]
-        //public void Get_ModelList_Index_Test()
-        //{
-        //    //Arrange
-        //    CommentsController controller = new CommentsController();
-        //    IActionResult actionResult = controller.Index();
-        //    ViewResult indexView = controller.Index() as ViewResult;
+        [Fact]
+        public void Get_ModelList_Index_Test()
+        {
+            //Arrange
+            CommentsController controller = new CommentsController();
+            IActionResult actionResult = controller.Index();
+            ViewResult indexView = controller.Index() as ViewResult;
 
-        //    //Act
-        //    var result = indexView.ViewData.Model;
+            //Act
+            var result = indexView.ViewData.Model;
 
-        //    //Assert
-        //    Assert.IsType<List<Comment>>(result);
-        //}
+            //Assert
+            Assert.IsType<List<Comment>>(result);
+        }
     }
 }
