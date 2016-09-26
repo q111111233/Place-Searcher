@@ -11,11 +11,10 @@ namespace PlaceSearch.Models
         public string Description { get; set; }
         public int PlaceId { get; set; }
         public virtual Place Place { get; set; }
-        public Comment(string description, int placeId, Place place, int commentId = 0)
+        public Comment(string description, int placeId, int commentId = 0)
         {
             Description = description;
             PlaceId = placeId;
-            Place = place;
             CommentId = commentId;
         }
 

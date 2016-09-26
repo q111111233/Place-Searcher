@@ -36,3 +36,30 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+<h2>list of comments</h2>
+<button class="comment-list">show all your comments</button>
+<div id="comment-list"></div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('.comment-list').click(function (event) {
+            event.preventDefault();
+            $.ajax({
+                url: '@Url.Action("CommentList")',
+                type: 'GET',
+                data: $(this).serialize(),
+                dataType: 'json',
+                success: function (result) {
+                    var stringResult = '<ul>';
+                    for (var i = 0; i < result.length; i++) {
+                        stringResult += '<li>' + 'Description: ' + result[i].description + '</li>';
+                    }
+                    stringResult += '</ul>';
+                    $('#comment-list').html(stringResult);
+                }
+            });
+        });
+    });
+</script>

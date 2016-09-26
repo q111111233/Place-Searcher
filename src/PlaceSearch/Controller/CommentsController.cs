@@ -22,6 +22,10 @@ namespace PlaceSearch.controller
         {
             return View(_db.Comments.Include(comments => comments.Place).ToList());
         }
+        public IActionResult CommentList()
+        {
+            return Json(_db.Comments);
+        }
         public IActionResult Details(int id)
         {
             var thisComment = _db.Comments.FirstOrDefault(comments => comments.CommentId == id);
