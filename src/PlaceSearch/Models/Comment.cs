@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PlaceSearch.Models
 {
+    [Table("Comments")]
     public class Comment
     {
         [Key]
@@ -9,5 +11,14 @@ namespace PlaceSearch.Models
         public string Description { get; set; }
         public int PlaceId { get; set; }
         public virtual Place Place { get; set; }
+        public Comment(string description, int placeId, Place place, int commentId = 0)
+        {
+            Description = description;
+            PlaceId = placeId;
+            Place = place;
+            CommentId = commentId;
+        }
+
+        public Comment() { }
     }
 }
