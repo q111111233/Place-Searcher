@@ -40,7 +40,7 @@ namespace PlaceSearch
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Places}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
 
             app.UseStaticFiles();

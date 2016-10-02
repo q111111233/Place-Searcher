@@ -1,1 +1,17 @@
-﻿<h1>The Index Page</h1>
+﻿
+@Html.ActionLink("Back home", "Index")
+
+@model PlaceSearch.Models.Map
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.Start_address)
+    @Html.TextBoxFor(model => model.Start_address)
+    @Html.LabelFor(model => model.End_address)
+    @Html.TextBoxFor(model => model.End_address)
+    <input type="submit" value="Add" />
+}
+
+
+<hr />
+the distance is: @ViewBag.allMaps
