@@ -12,6 +12,9 @@ _An App that allows the user to enter place of interest they visited, and let ot
 
 * `git clone <repository-url>` this repository
 * open this project on Visual Studio
+* add the following package source in the NuGet Package Manager Settings:
+    Name: dotnet-core
+    Source: https://dotnet.myget.org/F/dotnet-core/api/v3/index.json
 * run this application on Visual Studio
 
 ## Support and contact details
