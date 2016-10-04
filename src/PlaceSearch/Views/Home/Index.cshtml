@@ -3,15 +3,43 @@
 
 @model PlaceSearch.Models.Map
 
-@using (Html.BeginForm())
+<script src="http://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc=" crossorigin="anonymous"></script>
+<script src="~/js/script.js"></script>
+
+@*@using (Html.BeginForm())
 {
     @Html.LabelFor(model => model.Start_address)
     @Html.TextBoxFor(model => model.Start_address)
     @Html.LabelFor(model => model.End_address)
     @Html.TextBoxFor(model => model.End_address)
     <input type="submit" value="Add" />
-}
+}*@
+
+<form action="/home/Index" method="post">
+    <input type="text" name="start_address" id="start"/>
+    <input type="text" name="end_address" id="end"/>
+    <button type="submit">submit</button>
+</form>
+
+<iframe width="450"
+        height="250"
+        frameborder="0" style="border:0"
+        id="result">
+</iframe>
+
+    <style>
+        #map {
+            height: 200px;
+            width: 200px;
+        }
+    </style>
+
+    <div id="map"></div>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnHw2wcV9cCEgm-oqIoV3ODEl6j842EmA&callback=initMap">
+
+</script>
 
 
-<hr />
-the distance is: @ViewBag.allMaps
+    <hr />
+    the distance is: @ViewBag.allMaps

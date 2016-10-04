@@ -14,7 +14,6 @@ namespace PlaceSearch.controller
         // GET: /<controller>/
         public IActionResult Index()
         {
-            Console.Write("sdsadada");
             return View();
         }
 
