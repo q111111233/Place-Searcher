@@ -39,11 +39,11 @@ namespace PlaceSearch.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(string newName)
+        public async Task<IActionResult> Create(string newName, string address)
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var currentUser = await _userManager.FindByIdAsync(userId);
-            Place newPlace = new Place(newName, currentUser);
+            Place newPlace = new Place(newName, address, currentUser);
             _db.Places.Add(newPlace);
             _db.SaveChanges();
             return Json(newPlace);

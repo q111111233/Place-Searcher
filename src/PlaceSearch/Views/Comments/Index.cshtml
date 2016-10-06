@@ -8,10 +8,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
+            @Html.DisplayNameFor(model => model.Place.PlaceName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Place.PlaceName)
+            @Html.DisplayNameFor(model => model.Description)
         </th>
         <th></th>
     </tr>
@@ -20,10 +20,10 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelComment => listComment.Description)
+                @Html.DisplayFor(modelComment => listComment.Place.PlaceName)
             </td>
             <td>
-                @Html.DisplayFor(modelComment => listComment.Place.PlaceName)
+                @Html.DisplayFor(modelComment => listComment.Description)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = listComment.CommentId }) |
@@ -37,7 +37,7 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 
-<h2>list of comments</h2>
+@*<h2>list of comments</h2>
 <button class="comment-list">show all your comments</button>
 <div id="comment-list"></div>
 
@@ -62,4 +62,4 @@
             });
         });
     });
-</script>
+</script>*@

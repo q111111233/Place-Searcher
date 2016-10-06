@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Place Searcher";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model IEnumerable<PlaceSearch.Models.Place>
+
+
+
+<h2>Places</h2>
+<h4>@Html.DisplayNameFor(model => model.PlaceName)</h4>
+<ul>
+    @foreach (var listItem in Model)
+    {
+        <li>@Html.DisplayFor(modelItem => listItem.PlaceName) | @Html.ActionLink("Address", "Details", "Places", new { id = listItem.PlaceId })</li>
+    }
+</ul>
+
+@Html.ActionLink("Your Places", "Index", "Places")
+<br />
+@Html.ActionLink("Comment on Places", "Index", "Comments")
+

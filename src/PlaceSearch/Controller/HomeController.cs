@@ -11,7 +11,7 @@ namespace PlaceSearch.controller
 {
     public class HomeController : Controller
     {
-        // GET: /<controller>/
+        private ApplicationDbContext _db = new ApplicationDbContext();
         public IActionResult Index()
         {
             return View();
@@ -24,6 +24,10 @@ namespace PlaceSearch.controller
             Console.WriteLine(allMaps);
             ViewBag.allMaps = allMaps;
             return View();
+        }
+        public IActionResult PlaceList()
+        {
+            return View(_db.Places.ToList());
         }
 
         //public IActionResult SendMap()
