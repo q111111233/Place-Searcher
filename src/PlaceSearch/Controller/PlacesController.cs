@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PlaceSearch.Models;
+using System;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -39,11 +40,12 @@ namespace PlaceSearch.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(string newName, string address)
+        public async Task<IActionResult> Create(string newName, string newAddress)
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var currentUser = await _userManager.FindByIdAsync(userId);
-            Place newPlace = new Place(newName, address, currentUser);
+            Console.Write("asdadas");
+            Place newPlace = new Place(newName, newAddress, currentUser);
             _db.Places.Add(newPlace);
             _db.SaveChanges();
             return Json(newPlace);
