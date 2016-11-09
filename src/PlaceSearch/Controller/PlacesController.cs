@@ -24,7 +24,7 @@ namespace PlaceSearch.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return View(_db.Places.ToList());
         }
 
         public async Task<IActionResult> PlaceList()
@@ -44,7 +44,6 @@ namespace PlaceSearch.Controllers
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var currentUser = await _userManager.FindByIdAsync(userId);
-            Console.Write("asdadas");
             Place newPlace = new Place(newName, newAddress, currentUser);
             _db.Places.Add(newPlace);
             _db.SaveChanges();
