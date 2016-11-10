@@ -13,8 +13,8 @@
             @foreach (var listPlace in Model)
             {
                 <li>@Html.DisplayFor(modelPlace => listPlace.PlaceName)
-            | @Html.ActionLink("Details", "Details", new { id = listPlace.PlaceId })
-            | @Html.ActionLink("Edit", "Edit", new { id = listPlace.PlaceId })
+            | @Html.ActionLink("Map", "Details", new { id = listPlace.PlaceId })
+            | @Html.ActionLink("Change Name", "Edit", new { id = listPlace.PlaceId })
             | @Html.ActionLink("Delete", "Delete", new { id = listPlace.PlaceId })</li>
             }
         </ul>
